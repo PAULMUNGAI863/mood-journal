@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mood Journal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Mood Journal</h1>
+        <form method="POST">
+            <label for="mood">Mood:</label>
+            <select name="mood" required>
+                <option value="Happy">Happy</option>
+                <option value="Sad">Sad</option>
+                <option value="Excited">Excited</option>
+                <option value="Angry">Angry</option>
+            </select>
+
+            <label for="entry">Journal Entry:</label>
+            <textarea name="entry" required></textarea>
+
+            <button type="submit">Save</button>
+        </form>
+
+        <h2>Previous Entries</h2>
+        {% for e in entries %}
+            <div class="entry">
+                <p><strong>{{ e[1] }}</strong> - {{ e[2] }}</p>
+                <small>{{ e[3] }}</small>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
